@@ -1,6 +1,6 @@
 %Enter the value of t(0) 
 t_val = 10;
-filename1='test-1-finalOSP-SP';
+filename1='test-1OSP-SP';
 filename=strcat(filename1,'.csv');
 %Enter the filename for the SEC data
 SEC_data_array  = csvread(filename);
