@@ -1,5 +1,5 @@
 %Enter the value of t(0) 
-t_val = 10;
+t_val = 1;
 filename1='test-1OSP-SP';
 filename=strcat(filename1,'.csv');
 %Enter the filename for the SEC data
@@ -62,7 +62,7 @@ set(gca,'linew',3);
     
 figure
 surface(time_array2,output_wavelength,output_dataS,'EdgeColor','none');
-xlabel('Time (ps)', 'FontSize', 25)
+xlabel('Time (s)', 'FontSize', 25)
 
 ylabel('Wavelength (nm)', 'FontSize', 25)
 colorbar()
@@ -86,5 +86,5 @@ fileN=strcat(filename1,'_DOD.csv');
 fileN2=strcat(filename1,'_SMOOTH_','DOD.csv');
 csvwrite(fileN,Final);
 csvwrite(fileN2,FinalS);
-%clear
+clear
 %clc
