@@ -1,4 +1,4 @@
-filename1='test-1-finalOSP-SP';
+filename1='test-112OSP-SP';
 filename=strcat(filename1,'.csv');
 data=csvread(filename);
 
@@ -43,15 +43,22 @@ time2=time2';
 time_TF2=time_TF(2:end)';
 Io=Final(time_TF2);
 DOD=-log10(Final/Io);
-%DOD_smooth=smooth(DOD,50,'sgolay',3);
+DOD_smooth=smooth(DOD,50,'sgolay',3);
 % plot data region
 figure
 plot(time2,Final);
-
+xlabel('Time (s)') 
+ylabel('Counts.')
+set(gca,'Fontsize',20);
+set(gca,'linew',3);
 figure
 hold on
 plot(time2,DOD) 
-%plot(time2,DOD_smooth,'color','red') 
+plot(time2,DOD_smooth,'color','red') 
+xlabel('Time (nm)') 
+ylabel('Delta O.D.')
+set(gca,'Fontsize',20);
+set(gca,'linew',3);
 hold off
 
 Final=[time2',DOD'];
