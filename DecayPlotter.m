@@ -42,7 +42,7 @@ time2=time2';
 
 time_TF2=time_TF(2:end)';
 Io=Final(time_TF2);
-DOD=-log(Final/Io);
+DOD=-log10(Final/Io);
 %DOD_smooth=smooth(DOD,50,'sgolay',3);
 % plot data region
 figure
