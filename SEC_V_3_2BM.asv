@@ -67,7 +67,7 @@ leg=num2str(potentials_array2);
 legend(leg);
 lgd.FontSize = 10;
 lgnd.BoxFace.ColorType='truecoloralpha';
-lgnd.BoxFace.ColorData=uint8(255*[1 1 1 0.75]');
+lgnd.BoxFace.ColorData=uint8(255*[1 1 1 0.75]')
 
 
 
