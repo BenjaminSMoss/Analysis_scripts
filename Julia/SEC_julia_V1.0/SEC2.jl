@@ -83,32 +83,29 @@ if Multi_referance==false
       
       if i==1
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name=Re_ref_tuple[4]
+         name_ref=Re_ref_tuple[4]
          Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
 
-         write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name=Re_ref_tuple[4]
+         name_ref=Re_ref_tuple[4]
           Name_Final=DateAndTime(name_ref)
           write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,Refs[2],Refs[1])
-         name=Re_ref_tuple[4]
+         name_ref=Re_ref_tuple[4]
           Name_Final=DateAndTime(name_ref)
           write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
       elseif i==Number_of_refs
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[i])
-         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name=Re_ref_tuple[4]
+         name_ref=Re_ref_tuple[4]
          Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
       else 
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,Refs[i+1],Refs[i])
-         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name=Re_ref_tuple[4]
+         name_ref=Re_ref_tuple[4]
          Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
