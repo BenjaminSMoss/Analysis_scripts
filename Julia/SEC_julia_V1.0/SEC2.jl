@@ -12,10 +12,10 @@ include("SEC_functions_class.jl")
 
 #*********************INPUT VALUES
 
-filename="test_SEC"
-WL_name="WL.csv"
-WL_Max=800
-WL_Min=425
+filename="2h3-NIR-run5SEC"
+WL_name="WL-NIR.csv"
+WL_Max=1050
+WL_Min=800
 E_ref=1.09
 RHE_conv_factor=0.0
 E_ref_RHE=E_ref+RHE_conv_factor
@@ -82,33 +82,30 @@ if Multi_referance==false
    for i=1:Number_of_refs
       
       if i==1
-         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name=Re_ref_tuple[4]
-         Name_Final=DateAndTime(name_ref)
+         local  Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
+         name_ref=Re_ref_tuple[4]
+         local Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
 
-         write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
-         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name=Re_ref_tuple[4]
-          Name_Final=DateAndTime(name_ref)
+         local Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
+         name_ref=Re_ref_tuple[4]
+         local  Name_Final=DateAndTime(name_ref)
           write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
-         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,Refs[2],Refs[1])
-         name=Re_ref_tuple[4]
-          Name_Final=DateAndTime(name_ref)
+          local Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,Refs[2],Refs[1])
+         name_ref=Re_ref_tuple[4]
+         local Name_Final=DateAndTime(name_ref)
           write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
       elseif i==Number_of_refs
-         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[i])
-         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name=Re_ref_tuple[4]
-         Name_Final=DateAndTime(name_ref)
+         local Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[i])
+         name_ref=Re_ref_tuple[4]
+         local Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
       else 
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,Refs[i+1],Refs[i])
-         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name=Re_ref_tuple[4]
+         name_ref=Re_ref_tuple[4]
          Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
