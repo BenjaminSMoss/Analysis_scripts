@@ -60,11 +60,11 @@ potentials=y_ROI_Tuple[1] #we overwrite as we want to start from the ref potenti
 Data_ROI=y_ROI_Tuple[2] # we overwrite as we want to start from the ref potential
 E_ref_index_all=y_ROI_Tuple[3] # first padding 0 from array is also removed here
 
-#=
+
 DOD_tuple=Calculate_DOD_and_smooth(E_ref_RHE,Data_ROI,potentials,smoothing_weight)
 DOD=DOD_tuple[1]
 DOD_smooth=DOD_tuple[2]
-=#
+
 println("Progress: before plot generation")
 
 if Multi_referance==false
@@ -83,29 +83,32 @@ if Multi_referance==false
       
       if i==1
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name_ref=Re_ref_tuple[4]
+         name=Re_ref_tuple[4]
          Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
 
+         write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name_ref=Re_ref_tuple[4]
+         name=Re_ref_tuple[4]
           Name_Final=DateAndTime(name_ref)
           write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,Refs[2],Refs[1])
-         name_ref=Re_ref_tuple[4]
+         name=Re_ref_tuple[4]
           Name_Final=DateAndTime(name_ref)
           write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
       elseif i==Number_of_refs
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[i])
-         name_ref=Re_ref_tuple[4]
+         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
+         name=Re_ref_tuple[4]
          Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
       else 
          Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,Refs[i+1],Refs[i])
-         name_ref=Re_ref_tuple[4]
+         Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
+         name=Re_ref_tuple[4]
          Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
