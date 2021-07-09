@@ -5,24 +5,26 @@ using Base: Float64
 using CSV
 using Glob
 using DataFrames
-using SavitzkyGolay # to add go to https://github.com/lnacquaroli/SavitzkyGolay.jl
+using SavitzkyGolay # to add go to add https://github.com/lnacquaroli/SavitzkyGolay.jl
 using Plots
 using LinearAlgebra
 include("SEC_functions_class.jl")
 
 #*********************INPUT VALUES
-
-filename="2h3-NIR-run5SEC"
-WL_name="WL-NIR.csv"
-WL_Max=1050
-WL_Min=800
+code_path=pwd()
+# you must to replace \ pasted from windows with \\ in the path
+File_path="C:\\Users\\Benjamin\\Box\\CoFe-PB-project2\\2021-06-23-PB3h-1\\2h3"
+filename="2h3-run1SEC"
+WL_name="WL.csv"
+WL_Min=450
+WL_Max=800
 E_ref=1.09
 RHE_conv_factor=0.0
 E_ref_RHE=E_ref+RHE_conv_factor
 smoothing_weight=51
 
 #*******Referance multiple potentials
-Multi_referance=true
+Multi_referance=false
 timestamp=true # Set true/false
  # not including E_ref
 E1=1.3
@@ -32,6 +34,7 @@ Refs=[E_ref;E1;E2;E3]
 Number_of_refs=size(Refs)[1]
 
 #import data
+cd(File_path)
 full_data=CSVtoMatrix(filename) # outputs an object with cats x, y, z
 Data=full_data.z
 potentials=full_data.y
@@ -71,7 +74,7 @@ if Multi_referance==false
 
   
    Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-   name=Re_ref_tuple[4]
+   name_ref=Re_ref_tuple[4]
    Name_Final=DateAndTime(name_ref)
    write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
  # get region Plots
@@ -83,7 +86,7 @@ if Multi_referance==false
       
       if i==1
          local  Re_ref_tuple=ReRefDOD_plot(DOD_smooth,WL_ROI,potentials,potentials[end],Refs[1])
-         name_ref=Re_ref_tuple[4]
+         local  name_ref=Re_ref_tuple[4]
          local Name_Final=DateAndTime(name_ref)
          write_data_csv(Name_Final,Re_ref_tuple,WL_ROI)
 
@@ -114,4 +117,5 @@ if Multi_referance==false
 
    end        
 end 
+cd(code_path)
  println("Progress: end")
