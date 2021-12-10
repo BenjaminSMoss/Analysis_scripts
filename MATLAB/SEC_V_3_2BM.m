@@ -2,7 +2,7 @@
 baseline_potential_AgAgCl = 0.71; %in AgAgCl
 RHE_conv_factor=0.96;
 smoothing_weight=600;
-WL_max=105  0;
+WL_max=105;
 WL_min=350;
 filename1='28-run2-2SEC';
 filename=strcat(filename1,'.csv');

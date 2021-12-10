@@ -1,5 +1,5 @@
 %imput decay file at certain potential,get time array, wavelength array and spectra 
-filename1='PDtest-1.25OSP-SP';
+filename1='2h2-PD-1p88OSP-SP';
 filename=strcat(filename1,'.csv');
 data=csvread(filename);
 time_array=data(1,2:end);
@@ -9,20 +9,20 @@ filename2_=strcat(filename2,'.csv');
 WL_array = csvread(filename2_);
 
 % set a range for wavelength average,a certain point of wavelength cannot get good data quality due to the noise
-range=20;
+range=10;
 %create initial virable for data saving during for loop 
 DataDOD=0; 
 Wavelength=0;
 DataDODS=0;
 WavelengthS=0;
 %choose a time before signal increase as background adsorption 
-t_reference=10;
+t_reference=20;
 %set the time of decay start point.
-t_start_set=21.7;
+t_start_set=40;
 %set after how long from the decay start we calculate the signal decay
 decay_time=80;
 %obtain decay spectra at every wavelength
-for WL_val=450:0.5:850
+for WL_val=450:0.5:800
 upper=WL_val+range;
 lower=WL_val-range;
 % get the index of of the choosen region
