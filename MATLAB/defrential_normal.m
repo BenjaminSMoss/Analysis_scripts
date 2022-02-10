@@ -1,5 +1,5 @@
 %input data
-filename='GA_kinetics'
+filename='COOH_1p3switch_1_2_fix'
 filename1=strcat(filename,'.csv');
 Data=readtable(filename1)
 Data=table2array(Data)
