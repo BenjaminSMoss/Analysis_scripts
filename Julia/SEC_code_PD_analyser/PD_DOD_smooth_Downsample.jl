@@ -14,8 +14,8 @@ code_path=pwd()
 #*********************INPUT VALUES
 
 # you must to replace \ pasted from windows with \\ in the path
-File_path="C:\\Users\\Benjamin\\Box\\CoFe-PB-project2\\2021-08-24-PB2h-5\\2h-5"
-filename="PD-1p75-to-2OSP-SP"
+File_path=raw"C:\Users\B\Box\CoFe-PB-project2\SEC\CoOOH\2022-1-18-Co-CoFeOOH\Co\PD"
+filename="1p1OSP-SP"
 WL_name="WL.csv"
 WL_Min=460
 WL_Max=850

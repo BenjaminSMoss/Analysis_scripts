@@ -1,4 +1,4 @@
-filename1='PDtest-1.33OSP-SP';
+filename1='SEC-checkOSP-SP';
 filename=strcat(filename1,'.csv');
 data=csvread(filename);
 
