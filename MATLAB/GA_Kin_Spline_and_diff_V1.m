@@ -1,6 +1,6 @@
 %input data
 clc
-filename='COOH_1p3switch_1_2_fix'
+filename='CoOOH_GA_kin'
 filename1=strcat(filename,'.csv');
 Data=readtable(filename1);
 Data=table2array(Data);
