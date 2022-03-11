@@ -1,24 +1,29 @@
+clc
 %imput SEC_DOD data with iR correction 
-filename1='test-1SECsmoothDOD_iR_inverse_1.31V';
-filename=strcat(filename1,'.csv')
+filename1='test-4SEC0.964VsmoothDOD_iR';
+filename=strcat(filename1,'.csv');
 Data=csvread(filename);
 
+% set the potential window
+upper=1.7063;
+lower=0.96499;
+interval=0.02;
 Potential_array=Data(1,2:end);
 Wavelength_array=Data(:,1);
 % choose intervals you wanna plot 
-Potential_get=1.15:0.01:1.31;
+Potential_get=lower:interval:upper;
 N=length(Potential_get);
 Potential_get_index=[];
 
 %find potntial that most close to each point in intervals
 for i=1:N
-delta=abs(Potential_array-Potential_get(i))
-[value,index]=min(delta)
-Potential_get_index=[Potential_get_index,index]
+delta=abs(Potential_array-Potential_get(i));
+[value,index]=min(delta);
+Potential_get_index=[Potential_get_index,index];
 end
 %exctrat the array according to the interval
 Extract_array=Data(:,(Potential_get_index+1));
-Extract_array=[Wavelength_array,Extract_array]
+Extract_array=[Wavelength_array,Extract_array];
 
 %plot figue
 columns = size(Extract_array(2:end,2:end));
@@ -47,9 +52,8 @@ set(gcf,'color','w');
 axis square
 
 %save data
-
-fileN=strcat(filename1,'_interval_20mVs.csv');
+intervalName=num2str(interval);
+fileN=strcat(filename1,'_interval_', intervalName,'V_increment.csv');
 csvwrite(fileN,Extract_array);
 
 clear
-clc
