@@ -4,7 +4,7 @@ clc
 load('PB_data.mat')
 
 exclude_upper=0.98;
-exclude_lower=0.2;
+exclude_lower=0.05;
 fit_upper_E0=3;
 fit_lower_E0=0;
 fit_upper_r=1;
@@ -14,14 +14,15 @@ theta=data(:,2);
 E_exp=data(:,1);
 
 [xData, yData] = prepareCurveData( theta, E_exp);
-
+%+0.0256*log(t/(1-t))+(b/96485)*t+U1
 % Set up fittype and options.
 ft = fittype( '0.0256*log(t/(1-t))+(a/96485)*t+U0', 'independent', 't', 'dependent', 'E' );
 excludedPoints = (xData < exclude_lower) | (xData > exclude_upper);
 %the above cuts the potential region where there might be noise in coverage
 opts = fitoptions( 'Method', 'NonlinearLeastSquares' );
 opts.Display = 'Off';
-opts.StartPoint = [0.7 0.1];
+opts.StartPoint = [0.7 1.3];
+%, 0.7, 1.55
 %opts.Lower = [ fit_lower_E0 fit_lower_r];
 %opts.Upper = [fit_upper_E0  fit_upper_r ];
 
