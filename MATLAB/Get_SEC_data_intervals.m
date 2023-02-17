@@ -1,6 +1,6 @@
 clc
 %imput SEC_DOD data with iR correction 
-filename1='test-4SEC0.964VsmoothDOD_iR';
+filename1='test-2SEC1.224VsmoothDOD_iR';
 filename=strcat(filename1,'.csv');
 Data=csvread(filename);
 

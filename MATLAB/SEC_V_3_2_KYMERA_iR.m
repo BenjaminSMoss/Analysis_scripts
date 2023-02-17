@@ -1,16 +1,16 @@
 %Enter the value of the reference potential 
-baseline_potential_AgAgCl =0.21; %in AgAgCl
+baseline_potential_AgAgCl =0.3; %in AgAgCl
 Correct_baseline=0; %SET TO 0 IF NOT CORRECTING BASELINE
 RHE_conv_factor=0.924;
 base_string=num2str(baseline_potential_AgAgCl+RHE_conv_factor);
-iR=21.5;%input R obtain in EIS, put 0 if no need iR correct.
+iR=20.4;%input R obtain in EIS, put 0 if no need iR correct.
 iR_compen=0.85; %input iR compensation percentage
 smoothing_weight=50;
-WL_max=900;
-WL_min=500;
-filename1='test-3SEC'; %SEC data
+WL_max=870;
+WL_min=450;
+filename1='test-2SEC'; %SEC data
 filename2='WL'; % WL file from Solis
-filename3='test-3_JV'; % JC from SEC
+filename3='test-2_JV'; % JC from SEC
 filename=strcat(filename1,'.csv');
 filename2_=strcat(filename2,'.csv');
 filename3_=strcat(filename3,'.csv');
