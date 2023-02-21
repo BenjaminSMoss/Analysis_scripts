@@ -1,16 +1,16 @@
 %Enter the value of the reference potential 
-baseline_potential_AgAgCl =1.8; %in AgAgCl
+baseline_potential_AgAgCl =0.3; %in AgAgCl
 Correct_baseline=0; %SET TO 0 IF NOT CORRECTING BASELINE
-RHE_conv_factor=0;
+RHE_conv_factor=0.924;
 base_string=num2str(baseline_potential_AgAgCl+RHE_conv_factor);
-iR=56;%input R obtain in EIS, put 0 if no need iR correct.
+iR=20.4;%input R obtain in EIS, put 0 if no need iR correct.
 iR_compen=0.85; %input iR compensation percentage
 smoothing_weight=50;
-WL_max=860;
-WL_min=460;
-filename1='test-4SEC'; %SEC data
+WL_max=870;
+WL_min=450;
+filename1='test-2SEC'; %SEC data
 filename2='WL'; % WL file from Solis
-filename3='test-4_JV'; % JC from SEC
+filename3='test-2_JV'; % JC from SEC
 filename=strcat(filename1,'.csv');
 filename2_=strcat(filename2,'.csv');
 filename3_=strcat(filename3,'.csv');
@@ -88,7 +88,7 @@ potential_iR=potential(iR_correct_region)-iR*current(iR_correct_region)*iR_compe
 potentials_array_RHE=potential_iR+RHE_conv_factor;
 potentials_array_RHE=potentials_array_RHE'; %transport for data writing
 end
-JV_iR=[potential_iR,current(iR_correct_region)];
+JV_iR=[potentials_array_RHE',current(iR_correct_region)];
 %Plot data
 columns = size(output_data);
 columns = columns(2);
@@ -151,7 +151,7 @@ csvwrite(fileN,Final);
 csvwrite(fileNS,FinalS);
 csvwrite(filename5_,JV_iR);
 
-clear
+%clear
 clc
 
 

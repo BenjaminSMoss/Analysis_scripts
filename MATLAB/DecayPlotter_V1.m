@@ -1,11 +1,11 @@
 clc
-filename1='0p52_0p58SW_OSP-SP';
+filename1='PD-0p5-0p65OSP-SP';
 filename=strcat(filename1,'.csv');
 data=csvread(filename);
 WL=csvread("WL.csv");
 WL=WL(:,1);
 % set Wl and range to average around select referanc time to calculate DOD
-WL_val=500;
+WL_val=550;
 range=0.05;
 upper=WL_val+WL_val*range;
 lower=WL_val-WL_val*range;
@@ -39,7 +39,7 @@ Final=mean(spectra,1);
 time_TF2=time_TF(2:end)';
 Io=Final(time_TF2);
 DOD=-log10(Final/Io);
-DOD_smooth=smooth(DOD,75,'sgolay',3);
+DOD_smooth=smooth(DOD,10,'sgolay',3);
 % plot data region
 figure
 plot(time,Final);
