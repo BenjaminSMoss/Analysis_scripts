@@ -1,12 +1,12 @@
 %imput SEC_DOD data with iR correction 
-filename1='test-2SEC1.183VsmoothDOD_iR';
+filename1='NiSEC';
 filename=strcat(filename1,'.csv');
 Data=csvread(filename);
 
 Potential_array=Data(1,2:end);
 Wavelength_array=Data(:,1);
 % choose intervals you wanna plot 
-Potential_get=1.134:0.03:1.6573;
+Potential_get=1.1935:0.02:1.6135;
 N=length(Potential_get);
 Potential_get_index=[];
 

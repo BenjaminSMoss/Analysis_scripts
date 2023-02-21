@@ -1,6 +1,6 @@
 clc
 %imput SEC_DOD data with iR correction 
-filename1='test-4SEC0.964VsmoothDOD_iR_interval_0.02V_increment';
+filename1='NiSEC_interval_20mVs';
 filename=strcat(filename1,'.csv');
 Data=readmatrix(filename);
 Potential_array=Data(1,2:end);
@@ -24,7 +24,15 @@ S2=plot(Wavelength_array,Spectra_differenceNorm');
 %write data
 Wavelength_array=[0;Wavelength_array];
 Potential_and_spectra=[Potential_array;Spectra_difference];
+Potential_and_spectraN=[Potential_array;Spectra_differenceNorm];
+
 Differential_data=[Wavelength_array,Potential_and_spectra];
+Differential_dataN=[Wavelength_array,Potential_and_spectraN];
+
 filenameFin=strcat(filename1,'DIFF.csv');
+filenameFinN=strcat(filename1,'DIFF-NORM.csv');
+
 writematrix(Differential_data,filenameFin);
+writematrix(Differential_dataN,filenameFinN);
+
 clear
