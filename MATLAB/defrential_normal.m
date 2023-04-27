@@ -1,5 +1,5 @@
 %input data
-filename='COOH_1p3switch_1_2_fix'
+filename='2-SEC-0p5-1p6-0p01SEC1.11VDOD_iR_interval_25mVs'
 filename1=strcat(filename,'.csv');
 Data=readtable(filename1)
 Data=table2array(Data)

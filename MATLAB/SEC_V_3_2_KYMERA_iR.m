@@ -1,16 +1,17 @@
 %Enter the value of the reference potential 
-baseline_potential_AgAgCl =0.3; %in AgAgCl
+baseline_potential_AgAgCl =0.5; %in AgAgCl
+scan_negative=0 %set to one for a cathodic sweep
 Correct_baseline=0; %SET TO 0 IF NOT CORRECTING BASELINE
-RHE_conv_factor=0.924;
+RHE_conv_factor=0.61;
 base_string=num2str(baseline_potential_AgAgCl+RHE_conv_factor);
 iR=20.4;%input R obtain in EIS, put 0 if no need iR correct.
 iR_compen=0.85; %input iR compensation percentage
-smoothing_weight=50;
-WL_max=870;
-WL_min=450;
-filename1='test-2SEC'; %SEC data
+smoothing_weight=150;
+WL_max=800;
+WL_min=500;
+filename1='2-SEC-0p5-1p6-0p01SEC'; %SEC data
 filename2='WL'; % WL file from Solis
-filename3='test-2_JV'; % JC from SEC
+filename3='2-SEC-0p5-1p6-0p01_JV'; % JC from SEC
 filename=strcat(filename1,'.csv');
 filename2_=strcat(filename2,'.csv');
 filename3_=strcat(filename3,'.csv');
@@ -50,7 +51,12 @@ baseline_potential = baseline_potential_AgAgCl+RHE_conv_factor;
 c = ismember(potentials_array_RHE, baseline_potential);
 indexes = find(c);
 Ref_potential_check=potentials_array_RHE(c);
+if scan_negative==0
 potentials_array2=potentials_array_RHE>=Ref_potential_check;
+else 
+    potentials_array2=potentials_array_RHE<=Ref_potential_check;
+end
+
 %get the potentials after the ref potential note the transpose at the end
 potentials_array2=potentials_array_RHE(potentials_array2)';
 
@@ -83,7 +89,11 @@ current=JV(2:end-1,2); %delete the start 0 to make it the same with potential ar
 potential=JV(2:end-1,1);
 potential=flipud(potential);
 current=flipud(current);%the arrange of potential and current in JV is upside down
+if scan_negative==0
 iR_correct_region=(baseline_potential_AgAgCl<=potential&potential<=potentials_array(end));
+else
+    iR_correct_region=(baseline_potential_AgAgCl>=potential&potential>=potentials_array(end));
+end 
 potential_iR=potential(iR_correct_region)-iR*current(iR_correct_region)*iR_compen;
 potentials_array_RHE=potential_iR+RHE_conv_factor;
 potentials_array_RHE=potentials_array_RHE'; %transport for data writing

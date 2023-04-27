@@ -1,6 +1,6 @@
 %input data
 clc
-filename='CoOOH_GA_kin'
+filename='NiGA'
 filename1=strcat(filename,'.csv');
 Data=readtable(filename1);
 Data=table2array(Data);
@@ -12,9 +12,9 @@ y3=Data(:,4);
 
 %set fitting tolerance, the less the best fitting for original data, but
 %more noisy for differential data
-fit_tolerance1= 8e-09;
-fit_tolerance2= 8e-09;
-fit_tolerance3= 9e-10;
+fit_tolerance1= 9e-20;
+fit_tolerance2= 9e-20;
+fit_tolerance3= 1e-100;
 % Specify the smoothing parameter p that vary across the data.
 p=fit_tolerance3*[ones(1,560),0.001*ones(1,75),ones(1,465)];
 
