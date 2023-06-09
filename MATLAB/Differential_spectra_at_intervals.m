@@ -1,6 +1,6 @@
 clc
 %imput SEC_DOD data with iR correction 
-filename1='2-SEC-0p5-1p6-0p01SEC1.11VsmoothDOD_iR_interval_25mVs';
+filename1='test3SEC1.124VsmoothDOD_iR_interval_25mVs';
 filename=strcat(filename1,'.csv');
 Data=readmatrix(filename);
 Potential_array=Data(1,2:end);

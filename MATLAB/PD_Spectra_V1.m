@@ -1,9 +1,10 @@
 %Enter the value of t(0) 
-t_val = 1;
-filename1='PDtest-1.33OSP-SP';
+t_val = 30;
+filename1='spikeOSP-SP';
 filename=strcat(filename1,'.csv');
 %Enter the filename for the SEC data
-SEC_data_array  = csvread(filename);
+SEC_data_array  = readmatrix(filename);
+wavelengths_array=wavelengths_array(:,1);
 
 %Find potential and wavelength data from arrays
 % get data array also removing padding 0 from potential array
@@ -40,7 +41,7 @@ N=N(2);
 
 for i=1:N
     
-   DOD_smooth(:,i)=smooth(DOD(:,i),500,'sgolay',3);
+   DOD_smooth(:,i)=smooth(DOD(:,i),100,'sgolay',3);
 end 
 % get the data region that is more than the ref potential
 output_data=DOD(:,indexes:end);
